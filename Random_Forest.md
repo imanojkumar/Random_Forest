@@ -1,4 +1,43 @@
 
+## Assignment Introduction and Interpretation
+
+"""
+In this example above, I have defined response variable as Regular Smoking, and have considered all the explanatory variables (e.g. Age, Gender, race or any experience of being expelled from the school, etc.) in the dataset based on the answers to the question "Have you ever smoked cigarettes regularly (at least 1 sigrette smoked per day for continous 30 days)?".
+
+I first divided the data set into 60%-40% Train and Test datasets. Then I called a no. of libraries from Python for various statistical analysis.
+
+Following is the result of confusion matrix:
+array([[1442,   60],
+       [ 221,  107]])
+    True Negative: 1442
+    True Positive: 107
+    False Negative: 221
+    False Positive: 60
+    
+Accuracy in Prediction is found out to be: 0.85
+
+Then, based upon important feature criterion and different tree sizes, we ran a 25 tree ensemble of random forest to see the effect of that on accuracy of prediction. Following are the results (in according to the variables listed in our features set):
+
+Valiables
+['BIO_SEX','HISPANIC','WHITE','BLACK','NAMERICAN','ASIAN','age', 'ALCEVR1','ALCPROBS1','marever1','cocever1','inhever1','cigavail','DEP1','ESTEEM1','VIOL1',
+'PASSIST','DEVIANT1','SCHCONN1','GPA1','EXPEL1','FAMCONCT','PARACTV','PARPRES']
+
+Importance Score
+[ 0.02382876  0.01613692  0.02854005  0.01522122  0.00650991  0.00479691
+  0.06520711  0.06125229  0.04963882  0.09714242  0.0236702   0.0163416
+  0.02974558  0.06092194  0.05644238  0.05270618  0.01703965  0.06279687
+  0.06335496  0.06838091  0.01305733  0.06334959  0.05330749  0.05061092]
+  
+As we can see the highest importance score is 0.09714242 for variable 'marever1' (i.e. use of Marijuana)
+and lowest score is 0.00479691 for variable 'ASIAN' (i.e. Ethinicity Asian)
+
+Finally, in the plot of accuracies of different trees, as we can see, single tree is giving accuracy for about 83% while all other climb to maximum of 85% accuracy. This gives us some confidence that it may be perfectly appropriate to interpret single decision tree for this data, given that it's accuracy is quite near to that successive trees in the forest.
+"""
+
+## Python Code and Program Output
+
+### Call the libraries
+
 
 ```python
 from pandas import Series, DataFrame
@@ -373,14 +412,28 @@ predictions=classifier.predict(pred_test)
 
 
 ```python
+# Confusion Matrix
 sklearn.metrics.confusion_matrix(tar_test,predictions)
+```
+
+
+
+
+    array([[1442,   60],
+           [ 221,  107]])
+
+
+
+
+```python
+# Accuracy Score
 sklearn.metrics.accuracy_score(tar_test, predictions)
 ```
 
 
 
 
-    0.84699453551912574
+    0.84644808743169397
 
 
 
@@ -443,23 +496,16 @@ for idx in range(len(trees)):
 ```python
 plt.cla()
 plt.plot(trees, accuracy)
-```
-
-
-
-
-    [<matplotlib.lines.Line2D at 0x196505c0>]
-
-
-
-
-![png](output_22_1.png)
-
-
-
-```python
 plt.show()
 ```
+
+
+![png](output_27_0.png)
+
+
+
+
+
 
 
 ```python

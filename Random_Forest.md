@@ -2,7 +2,7 @@
 ## Assignment Introduction and Interpretation
 
 """
-In this example above, I have defined response variable as Regular Smoking, and have considered all the explanatory variables (e.g. Age, Gender, race or any experience of being expelled from the school, etc.) in the dataset based on the answers to the question "Have you ever smoked cigarettes regularly (at least 1 sigrette smoked per day for continous 30 days)?".
+In this assignment below , I have defined response variable as Regular Smoking, and have considered all the explanatory variables (e.g. Age, Gender, race or any experience of being expelled from the school, etc.) in the dataset based on the answers to the question "Have you ever smoked cigarettes regularly (at least 1 sigrette smoked per day for continous 30 days)?".
 
 I first divided the data set into 60%-40% Train and Test datasets. Then I called a no. of libraries from Python for various statistical analysis.
 
